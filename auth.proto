@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package calendar;
+
+option go_package = "generated/proto";
+
+service Auth {
+  rpc AuthByCode(AuthByCodeRequest) returns (TokenResponse) {
+  }
+
+  rpc RefreshToken(TokenRefreshRequest) returns (TokenResponse) {
+  }
+}
+
+message AuthByCodeRequest {
+  string code = 1;
+}
+
+message TokenRefreshRequest {
+  string refresh = 1;
+}
+
+message TokenResponse {
+  string token = 1;
+  string refresh = 2;
+}
